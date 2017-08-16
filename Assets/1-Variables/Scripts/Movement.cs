@@ -7,8 +7,8 @@ namespace Variables
 {
     public class Movement : MonoBehaviour
     {
-        public float movementSpeed = 20f;
-        public float rotationSpeed = 20f;
+        public float movementSpeed = 10f;
+        public float rotationSpeed = 30f;
         public Vector3 rotateDir = Vector3.forward;
 
         // Update is called once per frame
