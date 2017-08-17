@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/5-Arrays/Arrays.unity
-  isLoaded: 1
-  isActive: 1
