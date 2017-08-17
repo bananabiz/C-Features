@@ -7,7 +7,7 @@ namespace Arrays
     public class Weapon : MonoBehaviour
     {
         public int damage = 10;
-        public int maxBullets = 30;
+        public int maxBullets = 100;
         public float fireInterval = 0.2f;
         public GameObject bulletPrefab;
         public Transform spawnPoint;
@@ -30,7 +30,7 @@ namespace Arrays
             if (!isFired && currentBullets < maxBullets)
             {
                 // Fire!
-
+                StartCoroutine(Fire());
             }
 
             /*
@@ -65,7 +65,8 @@ namespace Arrays
             direction.Normalize();
 
             //3. Rotate the weapon to direction
-            transform.rotation = Quaternion.LookRotation(direction);
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
             //4. Grab the bullet script from clone
             Bullet bullet = clone.GetComponent<Bullet>();
