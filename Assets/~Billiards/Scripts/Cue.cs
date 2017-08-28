@@ -6,7 +6,7 @@ namespace Billiards
 {
     public class Cue : MonoBehaviour
     {
-        public Ball targetBall; //target ball selected which is generally the Cue ball)
+        public Balls targetBall; //target ball selected which is generally the Cue ball)
         public float minPower = 0f; //the min power which maps to the distance
         public float maxPower = 20f; //the max power which maps to the distance
         public float maxDistance = 5f; // the maximum distance in units the cue can be dragged back

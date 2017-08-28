@@ -10,6 +10,7 @@ public class KeepWithinScreen : MonoBehaviour {
     private Camera cam;
     private Bounds camBounds;
     private float camWidth, camHeight;
+    
 
 	// Use this for initialization
 	void Start ()
@@ -18,6 +19,7 @@ public class KeepWithinScreen : MonoBehaviour {
         cam = Camera.main;
         // Get the renderer component (SpriteRenderer, MeshRenderer or SkinnedMeshRenderer)
         rend = GetComponent<Renderer>();
+        
 	}
 
     void UpdateCamBounds()
@@ -55,6 +57,7 @@ public class KeepWithinScreen : MonoBehaviour {
         {
             //pos.y = camBounds.min.y + halfHeight;
             SceneManager.LoadScene(0);
+            //Destroy(GetComponent<Rigidbody2D>(), 1f);
         }
         //Check up
         else if (pos.y + halfHeight > camBounds.max.y)
