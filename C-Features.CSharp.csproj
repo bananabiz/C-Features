@@ -99,6 +99,7 @@
     <Compile Include="Assets\Breakout\Scripts\Paddle.cs" />
     <Compile Include="Assets\Breakout\Scripts\ScoreManager.cs" />
     <Compile Include="Assets\~Billiards\Scripts\Ball.cs" />
+    <Compile Include="Assets\~Billiards\Scripts\Balls.cs" />
     <Compile Include="Assets\~Billiards\Scripts\Cue.cs" />
     <Compile Include="Assets\~MineSweeper2D\Scripts\Grid.cs" />
     <Compile Include="Assets\~MineSweeper2D\Scripts\Tile.cs" />

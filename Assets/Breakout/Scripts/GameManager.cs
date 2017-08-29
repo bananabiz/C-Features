@@ -9,7 +9,8 @@ namespace Breakout
     {
 
         public int width = 20;
-        public int height = 20;
+        public int height = 15;
+        //public int total;
         public Vector2 spacing = new Vector2(25f, 10f);
         public Vector2 offset = new Vector2(-25f, 0f);
         public GameObject[] blockPrefabs;
@@ -18,10 +19,12 @@ namespace Breakout
 
         private GameObject[,] spawnedBlocks;
 
+      
         // Use this for initialization
         void Start()
         {
             GenerateBlocks();
+            //total = width * height;
         }
         // Function with arguments
         //<return-type> <function-name> (arguments)

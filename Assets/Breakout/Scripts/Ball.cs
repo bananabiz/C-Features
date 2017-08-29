@@ -10,7 +10,7 @@ public class Ball : MonoBehaviour {
         public ScoreManager scoreManager;
 
         private Vector3 velocity; //Velocity of the ball (Direction X Speed)
-
+        
         //Sends the ball flying in a given direction
         public void Fire(Vector3 direction)
         {
@@ -26,7 +26,7 @@ public class Ball : MonoBehaviour {
             Vector3 reflect = Vector3.Reflect(velocity, contact.normal);
             //Calculating new veloctiy (replacing the direction but not speed)
             velocity = reflect.normalized * velocity.magnitude;
-            if (other.gameObject.tag == "Block")
+            if (other.gameObject.tag == "BlockA" || other.gameObject.tag == "BlockB" || other.gameObject.tag == "BlockC")
             {
                 Destroy(other.gameObject);
                 scoreManager.score++;
