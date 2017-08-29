@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Billiards
+namespace Billiard
 { 
 public class Ball : MonoBehaviour {
         public float gravity = -9.81f;

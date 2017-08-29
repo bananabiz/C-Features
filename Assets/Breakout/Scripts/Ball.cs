@@ -6,7 +6,8 @@ namespace Breakout
 { 
 public class Ball : MonoBehaviour {
 
-        public float speed = 5f; //Speed that the ball travels
+        public float speed = 10f; //Speed that the ball travels
+        public ScoreManager scoreManager;
 
         private Vector3 velocity; //Velocity of the ball (Direction X Speed)
 
@@ -25,12 +26,17 @@ public class Ball : MonoBehaviour {
             Vector3 reflect = Vector3.Reflect(velocity, contact.normal);
             //Calculating new veloctiy (replacing the direction but not speed)
             velocity = reflect.normalized * velocity.magnitude;
+            if (other.gameObject.tag == "Block")
+            {
+                Destroy(other.gameObject);
+                scoreManager.score++;
+            }
         }
 
 
 	    // Use this for initialization
 	    void Start () {
-	    	
+            scoreManager = GameObject.Find("Score").GetComponent<ScoreManager>(); 
 	    }
 	    
 	    // Update is called once per frame

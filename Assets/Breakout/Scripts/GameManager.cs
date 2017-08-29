@@ -58,7 +58,8 @@ namespace Breakout
                     // Create new instance of the block
                     GameObject block = GetRandomBlock();
                     // Set the new position
-                    Vector3 pos = new Vector3(x, y, 0);
+                    Vector2 pos = new Vector2(x * spacing.x, y * spacing.y);
+                    pos += offset;
                     block.transform.position = pos;
                     // Add spawned blocks to array
                     spawnedBlocks[x, y] = block;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Renderer))] //Force Renderer component to be attached
 public class KeepWithinScreen : MonoBehaviour {
@@ -52,7 +53,8 @@ public class KeepWithinScreen : MonoBehaviour {
         //Check down
         if (pos.y - halfHeight < camBounds.min.y)
         {
-            pos.y = camBounds.min.y + halfHeight;
+            //pos.y = camBounds.min.y + halfHeight;
+            SceneManager.LoadScene(0);
         }
         //Check up
         else if (pos.y + halfHeight > camBounds.max.y)

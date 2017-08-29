@@ -97,6 +97,11 @@
     <Compile Include="Assets\Breakout\Scripts\Ball.cs" />
     <Compile Include="Assets\Breakout\Scripts\GameManager.cs" />
     <Compile Include="Assets\Breakout\Scripts\Paddle.cs" />
+    <Compile Include="Assets\Breakout\Scripts\ScoreManager.cs" />
+    <Compile Include="Assets\~Billiards\Scripts\Ball.cs" />
+    <Compile Include="Assets\~Billiards\Scripts\Cue.cs" />
+    <Compile Include="Assets\~MineSweeper2D\Scripts\Grid.cs" />
+    <Compile Include="Assets\~MineSweeper2D\Scripts\Tile.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

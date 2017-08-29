@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Breakout/Breakout.unity
+- path: Assets/~MineSweeper2D/Minesweeper2D.unity
   isLoaded: 1
   isActive: 1
