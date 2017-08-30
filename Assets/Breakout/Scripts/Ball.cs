@@ -8,6 +8,7 @@ public class Ball : MonoBehaviour {
 
         public float speed = 10f; //Speed that the ball travels
         public ScoreManager scoreManager;
+        public AudioSource sound;
 
         private Vector3 velocity; //Velocity of the ball (Direction X Speed)
         
@@ -28,6 +29,7 @@ public class Ball : MonoBehaviour {
             velocity = reflect.normalized * velocity.magnitude;
             if (other.gameObject.tag == "BlockA" || other.gameObject.tag == "BlockB" || other.gameObject.tag == "BlockC")
             {
+                sound.Play();
                 Destroy(other.gameObject);
                 scoreManager.score++;
             }
@@ -36,7 +38,8 @@ public class Ball : MonoBehaviour {
 
 	    // Use this for initialization
 	    void Start () {
-            scoreManager = GameObject.Find("Score").GetComponent<ScoreManager>(); 
+            scoreManager = GameObject.Find("Score").GetComponent<ScoreManager>();
+            sound = GetComponent<AudioSource>(); 
 	    }
 	    
 	    // Update is called once per frame
