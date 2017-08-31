@@ -52,6 +52,9 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -66,6 +69,9 @@
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
@@ -112,9 +118,11 @@
     <Compile Include="Assets\Breakout\Scripts\ScoreManager.cs" />
     <Compile Include="Assets\~Billiards\Scripts\Ball.cs" />
     <Compile Include="Assets\~Billiards\Scripts\Balls.cs" />
+    <Compile Include="Assets\~Billiards\Scripts\BallsCollion.cs" />
     <Compile Include="Assets\~Billiards\Scripts\Cue.cs" />
     <Compile Include="Assets\~MineSweeper2D\Scripts\Grid.cs" />
     <Compile Include="Assets\~MineSweeper2D\Scripts\Tile.cs" />
+    <Compile Include="Assets\~TowerDefense\Scripts\AIAgent.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
