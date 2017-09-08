@@ -83,32 +83,9 @@ namespace MineSweeper2D
                 }
             }
             return count;
-            /*
-            int count = 0;
-
-            if (mineAt(t.x, t.y + 1)) ++count; // top
-            if (mineAt(t.x + 1, t.y + 1)) ++count; // top-right
-            if (mineAt(t.x + 1, t.y)) ++count; // right
-            if (mineAt(t.x + 1, t.y - 1)) ++count; // bottom-right
-            if (mineAt(t.x, t.y - 1)) ++count; // bottom
-            if (mineAt(t.x - 1, t.y - 1)) ++count; // bottom-left
-            if (mineAt(t.x - 1, t.y)) ++count; // left
-            if (mineAt(t.x - 1, t.y + 1)) ++count; // top-left
-
-            return count;
-            */
+            
         }
-
-
-        //float AddNNumbers(float[] numbers)
-        //{
-        //    float result = 0;
-        //    for (int i = 0; i < numbers.Length; i++)
-        //    {
-        //        result += numbers[i];
-        //    }
-        //    return result;
-        //}
+        
 
         void FixedUpdate()
         {
