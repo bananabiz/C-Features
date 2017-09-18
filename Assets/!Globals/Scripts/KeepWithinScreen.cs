@@ -37,8 +37,7 @@ public class KeepWithinScreen : MonoBehaviour {
         Vector3 size = rend.bounds.size;
         float halfWidth = size.x * 0.5f;
         float halfHeight = size.y * 0.5f;
-        float halfCamWidth = camWidth * 0.5f;
-        float halfCamheight = camHeight * 0.5f;
+
 
         //Check left
         if (pos.x - halfWidth < camBounds.min.x)

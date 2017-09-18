@@ -58,7 +58,7 @@ namespace LoopsArray
                 // Store randomly selected prefab
                 GameObject randomPrefab = spawnPrefabs[randomIndex];
                 // Instantiate randomly selected prefab
-                GameObject clone = Instantiate(spawnPrefabs[randomIndex]);
+                GameObject clone = Instantiate(randomPrefab);
                 // Grab the MeshRenderer
                 MeshRenderer rend = clone.GetComponent<MeshRenderer>();
                 // Change the color

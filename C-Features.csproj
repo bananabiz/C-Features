@@ -87,6 +87,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\!Globals\Scripts\DestroyOnLifeTime.cs" />
     <Compile Include="Assets\!Globals\Scripts\KeepWithinScreen.cs" />
     <Compile Include="Assets\!Globals\Scripts\VisualizeBounds.cs" />
     <Compile Include="Assets\1-Variables\Scripts\Movement.cs" />
@@ -118,6 +119,11 @@
     <Compile Include="Assets\~MineSweeper2D\Scripts\Grid.cs" />
     <Compile Include="Assets\~MineSweeper2D\Scripts\Tile.cs" />
     <Compile Include="Assets\~TowerDefense\Scripts\AIAgent.cs" />
+    <Compile Include="Assets\~TowerDefense\Scripts\AIAgentSpawner.cs" />
+    <Compile Include="Assets\~TowerDefense\Scripts\Enemy.cs" />
+    <Compile Include="Assets\~TowerDefense\Scripts\Towers\Cannon.cs" />
+    <Compile Include="Assets\~TowerDefense\Scripts\Towers\Projectile.cs" />
+    <Compile Include="Assets\~TowerDefense\Scripts\Towers\Tower.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

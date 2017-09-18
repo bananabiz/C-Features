@@ -6,6 +6,11 @@ namespace MineSweeper2D
 {
     public class Grid : MonoBehaviour
     {
+        public enum mineState
+        {
+            Loss = 0,
+            Win = 1
+        }
         public GameObject tilePrefab;
         public static int width = 10;
         public static int height = 10;
@@ -13,7 +18,7 @@ namespace MineSweeper2D
         public static Tile[,] tiles = new Tile[width, height];
 
         private float offset = 0.5f;
-        Ray ray;
+                
         // Use this for initialization
         void Start()
         {
@@ -85,7 +90,124 @@ namespace MineSweeper2D
             return count;
             
         }
-        
+
+        public void FFuncover(int x, int y, bool[,] visited)
+        {
+            // If x >= 0 AND x < width AND y < height
+            if (x >= 0 && x < width && y < height)
+            {
+                // If visited[x, y]
+                if (visited[x, y])
+                {
+                    // RETURN
+                    return;
+                }
+                // Let tile = tiles[x, y]
+                Tile tile = tiles[x, y];
+                // Let adjacentMines = GetAdjacentMineCountAt(tile)
+                int adjacentMines = GetAdjacentMineCountAt(tile);
+                // Call tile.Reveal(adjacentMines)
+                tile.Reveal(adjacentMines);
+                // If adjacentMines > 0
+                if (adjacentMines > 0)
+                {
+                    // Return
+                    return;
+                }
+                // Set visited[x, y] = true
+                visited[x, y] = true;
+                // Call FFuncover(x - 1, y, visited)
+                FFuncover(x - 1, y, visited);
+                // Call FFuncover(x + 1, y, visited)
+                FFuncover(x + 1, y, visited);
+                // Call FFuncover(x, y - 1, visited)
+                FFuncover(x, y - 1, visited);
+                // Call FFuncover(x, y + 1, visited)
+                FFuncover(x, y + 1, visited);
+            }
+        }
+
+        // Uncovers all mines that are in the grid
+        public void UncoverMines(int mineState)
+        {
+            // For x = 0 to x < width
+            for (int x = 0; x < width; x++)
+            {
+                // For y = 0 to y < height
+                for (int y = 0; y < height; y++)
+                {
+                    // Let currentTile = tiles[x, y]
+                    Tile currentTile = tiles[x, y];
+                    // If currentTile isMine
+                    if (currentTile.isMine)
+                    {
+                        // Let adjacentMines = GetAdjecentMineCountAt(currentTile)
+                        int adjacentMines = GetAdjacentMineCountAt(currentTile);
+                        // Call currentTile.Reveal(adjacentMines, mineState)
+                        currentTile.Reveal(adjacentMines, mineState);
+                    }
+                }
+            }
+        }
+
+        // Detects if there are no more empty tiles in the game
+        bool NoMoreEmptyTiles()
+        {
+            // Let emptyTileCount = 0
+            int emptyTileCount = 0;
+            // For x = 0 to x < width
+            for (int x = 0; x < width; x++)
+            { 
+                // For y = 0 to y < height
+                for (int y=0; y<height; y++)
+                {
+                    // Let currentTile = tiles[x, y]
+                    Tile currentTile = tiles[x, y];
+                    // If !currentTile.isRevealed AND !currentTile.isMine
+                    if (!currentTile.isRevealed && !currentTile.isMine)
+                    {
+                        //Set emptyTileCount = emptyTileCount + 1
+                        emptyTileCount++;
+                    }
+                }
+            }
+            // Return emptyTileCount
+            return emptyTileCount == 0;
+        }
+
+        // Takes in a tile selected by the user in some way to reveal it
+        public void SelectTile(Tile selectedTile)
+        {
+            // Let adjacentMines = GetAdjacentMineCountAt(selectedTile)
+            int adjacentMines = GetAdjacentMineCountAt(selectedTile);
+            // Call selectedTile.Reveal(adjacentMines)
+            selectedTile.Reveal(adjacentMines);
+            // If selectedTile isMine
+            if (selectedTile.isMine)
+            {
+                // Call UncoverMines(0)
+                UncoverMines(0);
+                // [Extra] Perform Game Over logic
+            }
+            // ElseIf adjacentMines == 0
+            else if (adjacentMines == 0)
+            {
+                // Let x = selectedTile.x
+                int x = selectedTile.x;
+                // Let y = selectedTile.y
+                int y = selectedTile.y;
+                // Call FFuncover(x, y, new bool[width, height]
+                FFuncover(x, y, new bool[width, height]);
+            }
+            // If NoMoreEmptyTiles()
+            if (NoMoreEmptyTiles())
+                {
+                    //Call UncoverMines(1)
+                    UncoverMines(1); 
+                    // [Extra] Perform Win logic
+                }
+            }
+        }
 
         void FixedUpdate()
         {
@@ -102,6 +224,7 @@ namespace MineSweeper2D
                     // LET tile = hit collider's Tile component
                     Tile tile = hit.collider.GetComponent<Tile>();
                     // IF tile != null
+                        // Call SelectedTile(hitTile)
                     if (tile != null)
                     {
                         // LET adjacentMines = GetAdjacentMineCountAt(tile)
@@ -110,6 +233,31 @@ namespace MineSweeper2D
                         tile.Reveal(adjacentMines);
                     }
                 }
+            }
+        }
+
+        private void Update()
+        {
+            //If Mouse Button 0 is down
+            if (Input.GetMouseButtonDown(0)
+            {
+                //Let ray = Ray from Camera using Input.mousePosition
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                //Let hit = Physics2D RayCast (ray.origin, ray.direction)
+                RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+            
+                //If hit's collider != null
+                if (hit.collider != null)
+                {
+                    //Let hitTile = hit collider's Tile component
+                    Tile hitTile = hit;
+                }
+                    //If hitTile != null
+                    if (hitTile != null)
+                    { 
+                    //Call SelectTile(hitTile)
+                    SelectTile(hitTile);
+                    }
             }
         }
     }

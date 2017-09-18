@@ -17,7 +17,6 @@ public class PlayerShip : MonoBehaviour
 	    void Start ()
         {
             rigid = GetComponent<Rigidbody2D>();
-            Rigidbody2D[] rigids = FindObjectsOfType<Rigidbody2D>();
 	    }
 
         /*
@@ -42,7 +41,7 @@ public class PlayerShip : MonoBehaviour
             {
                 currentSpeed = gottaGoFast;
             }
-            rigid.AddForce(transform.up * inputV * acceleration);
+            rigid.AddForce(transform.up * inputV * currentSpeed);
         }
 
         void Rotate()

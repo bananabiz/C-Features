@@ -9,13 +9,6 @@ public class Shooting : MonoBehaviour {
     public float shootRate = 0.1f;
     public float shootTimer = 0f;
 
-    private Rigidbody2D rigid;
-
-	// Use this for initialization
-	void Start () {
-        rigid = GetComponent<Rigidbody2D>();  
-	}
-
     // Update is called once per frame
     void Update() {
         shootTimer += Time.deltaTime;

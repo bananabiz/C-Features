@@ -28,7 +28,7 @@ namespace MineSweeper2D
         // Use this for initialization
         void Start()
         {
-            // randomly decide if it's a mine or not
+            // randomly decide if it's a min or not
             isMine = Random.value < 0.1f;
         }
 
@@ -37,7 +37,6 @@ namespace MineSweeper2D
         {
 
         }
-
         public void Reveal(int adjacentMines, int mineState = 0)
         {
             // flags the tile as being revealed
@@ -55,5 +54,6 @@ namespace MineSweeper2D
                 rend.sprite = emptySprites[adjacentMines];
             }
         }
+
     }
 }
