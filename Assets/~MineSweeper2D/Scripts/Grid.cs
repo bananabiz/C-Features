@@ -18,7 +18,7 @@ namespace MineSweeper2D
         public static Tile[,] tiles = new Tile[width, height];
 
         private float offset = 0.5f;
-                
+
         // Use this for initialization
         void Start()
         {
@@ -88,7 +88,7 @@ namespace MineSweeper2D
                 }
             }
             return count;
-            
+
         }
 
         public void FFuncover(int x, int y, bool[,] visited)
@@ -97,6 +97,7 @@ namespace MineSweeper2D
             if (x >= 0 && x < width && y < height)
             {
                 // If visited[x, y]
+                Debug.Log(visited[x, y]); 
                 if (visited[x, y])
                 {
                     // RETURN
@@ -157,9 +158,9 @@ namespace MineSweeper2D
             int emptyTileCount = 0;
             // For x = 0 to x < width
             for (int x = 0; x < width; x++)
-            { 
+            {
                 // For y = 0 to y < height
-                for (int y=0; y<height; y++)
+                for (int y = 0; y < height; y++)
                 {
                     // Let currentTile = tiles[x, y]
                     Tile currentTile = tiles[x, y];
@@ -201,11 +202,10 @@ namespace MineSweeper2D
             }
             // If NoMoreEmptyTiles()
             if (NoMoreEmptyTiles())
-                {
-                    //Call UncoverMines(1)
-                    UncoverMines(1); 
-                    // [Extra] Perform Win logic
-                }
+            {
+                //Call UncoverMines(1)
+                UncoverMines(1);
+                // [Extra] Perform Win logic
             }
         }
 
@@ -224,7 +224,7 @@ namespace MineSweeper2D
                     // LET tile = hit collider's Tile component
                     Tile tile = hit.collider.GetComponent<Tile>();
                     // IF tile != null
-                        // Call SelectedTile(hitTile)
+                    // Call SelectedTile(hitTile)
                     if (tile != null)
                     {
                         // LET adjacentMines = GetAdjacentMineCountAt(tile)
@@ -239,25 +239,26 @@ namespace MineSweeper2D
         private void Update()
         {
             //If Mouse Button 0 is down
-            if (Input.GetMouseButtonDown(0)
+            if (Input.GetMouseButtonDown(0))
             {
                 //Let ray = Ray from Camera using Input.mousePosition
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 //Let hit = Physics2D RayCast (ray.origin, ray.direction)
                 RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-            
+
                 //If hit's collider != null
                 if (hit.collider != null)
                 {
                     //Let hitTile = hit collider's Tile component
-                    Tile hitTile = hit;
-                }
+                    Tile hitTile = hit.collider.GetComponent<Tile>();
+
                     //If hitTile != null
                     if (hitTile != null)
-                    { 
-                    //Call SelectTile(hitTile)
-                    SelectTile(hitTile);
+                    {
+                        //Call SelectTile(hitTile)
+                        SelectTile(hitTile);
                     }
+                }
             }
         }
     }

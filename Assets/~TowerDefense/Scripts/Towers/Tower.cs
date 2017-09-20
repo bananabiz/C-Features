@@ -36,8 +36,30 @@ namespace TowerDefense
             } 
         }
 
+        
+        List<Enemy> RemoveAllNulls(List<Enemy> listWithNulls)
+        {
+            //Let listWithoutNulls = new List
+            List<Enemy> listWithoutNulls = new List<Enemy>();
+
+
+            // >> Algorithm goes here <<
+            foreach (Enemy e in listWithNulls)
+            {
+                if (e != null)
+                {
+                    listWithoutNulls.Add(e);
+                }
+            }
+                //Return listWithoutNulls
+                return listWithoutNulls;
+        }
+
+
         Enemy GetClosestEnemy()
         {
+            //Set enemies = RemoveAllNulls(enemies)
+            enemies = RemoveAllNulls(enemies);
             //Let closest = null
             Enemy closest = null;
             //Let minDistance = float.MaxValue
@@ -58,10 +80,9 @@ namespace TowerDefense
             }
             //Return closest, return null if none were found
             return closest;
-
         }
 
-
+        
         int AddTwoNumbers(int a, int b)
         {
             return a + b;
