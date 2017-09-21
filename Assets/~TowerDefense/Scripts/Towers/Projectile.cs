@@ -14,7 +14,7 @@ namespace TowerDefense
         // Use this for initialization
         void Start()
         {
-             
+            Destroy(this.gameObject, 1f);
         }
 
         // Update is called once per frame
@@ -35,16 +35,16 @@ namespace TowerDefense
             {
                 //Call e.DealDamage(damage)
                 e.DealDamage(damage);
-                //Destroy gameObject
-                Destroy(col.gameObject);
-                //If col's name == "Ground"
-                if (col.name == "Ground")
-                {
-                    //Destroy the projectile
-                    Destroy(this.gameObject);
-                }
+                //Destroy self
+                Destroy(gameObject);
+                
+            }
+            //If col's name == "Wall"
+            if (col.tag == "Wall")
+            {
+                //Destroy the projectile
+                Destroy(gameObject);
             }
         } 
-
     }
 }

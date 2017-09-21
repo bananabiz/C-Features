@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/~TowerDefense/TowerDefense.unity
+- path: Assets/8-Inheritance/Inheritance.unity
   isLoaded: 1
   isActive: 1
